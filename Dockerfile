@@ -1,9 +1,9 @@
-FROM ubuntu
-RUN apt-get update
-RUN apt-get install -y nodejs npm
-COPY . /app
+FROM node:22-alpine
 WORKDIR /app
-RUN npm i
-RUN npm run build
-EXPOSE 3000
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build 
+ENV PORT=3000
+EXPOSE 3000 
 CMD ["npx", "run", "start"]
