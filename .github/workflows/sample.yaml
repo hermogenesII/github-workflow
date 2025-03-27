@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: my-actions
-        uses: ./
+        uses: .
       - name: Successful
         run: echo "My actions works"
