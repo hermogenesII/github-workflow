@@ -1,7 +1,10 @@
-FROM node:22-alpine
+FROM ubuntu
+RUN apt-get update
+RUN apt-get install -y nodejs npm
+COPY . /app
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+RUN npm i
 COPY . .
 RUN npm run build 
 ENV PORT=3000
