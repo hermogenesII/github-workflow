@@ -1,29 +1,17 @@
 name: sample workflow
-
 on:
   push:
     branches:
       - main
-
 jobs:
   sample-build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: my-actions
+        uses: ./
         with:
-          node-version: 22
-          cache: "npm" # Caches node_modules for faster builds
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build the Application
-        run: npm run build
-
-      - name: Run the Application (Test if Next.js Starts)
-        run: npm start
+          node-version: "22"
+      - name: Successful
+        run: echo "My actions works"
